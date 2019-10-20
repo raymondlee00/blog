@@ -1,3 +1,9 @@
 Team Devlog!! Super Exciting
 alexT -- 2019-10-20 6:40pm
   Finished component list and interaction page.
+
+
+rahmanM -- 2019-10-20 10:54
+Yesterday was pretty productive, given it was our first day of serious work. I
+finished a diagram for the database structure. I also laid some rudimentary
+boilerplate code and a basic registration html and python. 
