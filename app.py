@@ -25,6 +25,23 @@ def register():
 		return "you are now registered!!"
 
 
+@app.route('/auth')
+def auth():
+	if len(request.args) == 0:
+		# throw Exception e
+		pass
+	else:
+		# check if uname is in sql
+		command = "SELECT * FROM users where name = '{}'".format(request.args["username"])
+		pair = runsqlcommand(command)
+		if len(pair) == 0:
+			# throw exception
+			pass
+		else:
+			if (request.args["password"] == pair[1]):
+				session["username"] = request.args[0]
+				pass
+
 
 def runsqlcommand(command):
 	DB_FILE="data.db"
