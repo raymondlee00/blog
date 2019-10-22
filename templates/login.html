@@ -1,0 +1,26 @@
+{% extends 'basic.html' %}
+  {% block head %}
+<h2> Quackheads Blog </h2>
+  {%endblock%}
+
+  {% block content %}
+    <p> Login Below: </p>
+    <br>
+    <form action = "/login">
+      <p> Username: </p>
+      <input type = "text" name = "username">
+      <br>
+      <br>
+      <p> password: </p>
+      <input type = "text" name = "password">
+      <br>
+      <br>
+      <input type = "submit" name = "sub1" value = "login">
+  </form>
+  {% endblock %}
+
+  {% block footer %}
+    <form action = "/register">
+      <input type = "submit" name = "sub2" value = "register">
+    </form>
+  {%endblock%}
