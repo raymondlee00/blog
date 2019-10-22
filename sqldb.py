@@ -5,30 +5,67 @@ DB_FILE= "glit.db"
 db = sqlite3.connect("glit.db") #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 #==============================================================================
-#create table
+#create table to store userinformation
+#row[0] = username
+#row[1] = password
 command = "CREATE TABLE userinfo(username TEXT, password TEXT);"
 c.execute(command) # run SQL statement
 
-#create table
-command = "CREATE TABLE blogs(username TEXT, blogid INTEGER, title TEXT, content TEXT);"
+#create table to store blog posts
+#row[0] = username of blog creator
+#row[1] = blogid
+#row[2] = blog title
+#row[3] = blog content
+command = "CREATE TABLE bloginfo(username TEXT, blogid INTEGER, title TEXT, content TEXT);"
 c.execute(command) # run SQL statement
 
 #==============================================================================
-#returns password given a username, if username is not present in the database return None
-def fetchUsername(username):
+#USERINFO TABLE COMMANDS
+#returns password for a given username, if username is nonexistant return None
+def fetchPassword(username):
     command = "SELECT * FROM userinfo"
     c.execute(command)
     data = c.fetchall()
     for row in data:
-        if row[0] = username:
+         if row[0] == username:
             return row[1]
         else:
             return None
 
-def fetchBlog(blogid):
-
-def fetchAllBlogs():
-
+#adds a user to the userinfo table
 def addUser(username, password):
+    command = "SELECT * FROM userinfo"
+    c.execute(command)
+    data = c.fetchall()
 
-def addPost(username, blogid, title, content):
+#______________________________________________________________________________
+#BLOGINFO TABLE COMMANDS
+#returns blog title given its blogid
+def fetchBlogTitle(blogid):
+    command = "SELECT * FROM bloginfo"
+    c.execute(command)
+    data = c.fetchall()
+
+#returns blog content given its blogid
+def fetchBlogContent(blogid):
+    command = "SELECT * FROM bloginfo"
+    c.execute(command)
+    data = c.fetchall()
+
+#returns all blog titles
+def fetchAllBlogTitles():
+    command = "SELECT * FROM bloginfo"
+    c.execute(command)
+    data = c.fetchall()
+
+#returns all blog content
+def fetchAllBlogContent():
+    command = "SELECT * FROM bloginfo"
+    c.execute(command)
+    data = c.fetchall()
+
+#adds a post to the blogs table
+def addBlog(username, blogid, title, content):
+
+#deletes a blog from the blogs table
+def deleteBlog(blogid):
