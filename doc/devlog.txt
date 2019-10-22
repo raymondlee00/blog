@@ -6,4 +6,13 @@ alexT -- 2019-10-20 6:40pm
 rahmanM -- 2019-10-20 10:54
 Yesterday was pretty productive, given it was our first day of serious work. I
 finished a diagram for the database structure. I also laid some rudimentary
-boilerplate code and a basic registration html and python. 
+boilerplate code and a basic registration html and python.
+
+alexO -- 2019-10-22 9:15
+recreated table which stores blogs. the new values are username, blogid, blog title, and blog content.
+reasoning behind the change is ease of coding, as working with simple integer values to identify
+a specific blog is far simpler than using timestamps. furthermore, it was decided a blog title column
+was necessary.
+
+also began creating functions to manipulate and retrieve data from the database. examples include
+fetchUsername, fetchBlog, fetchAllBlogs, etc...
