@@ -76,8 +76,10 @@ def fetchAllBlogContent():
 
 #adds a post to the blogs table
 def addBlog(username, blogid, title, content):
-    command = "INSERT INTO bloginfo(username, blogid, title, content) VALUES" + "(" + "'" + str(username) + "'" + "," + str(blogid) + "," + title + "," + content + ");"
+    command = "INSERT INTO bloginfo VALUES('{}', {}, '{}', '{}')".format(username, blogid, title, content)
     c.execute(command)
+    db.commit()
+
 
 #deletes a blog from the blogs table
 def deleteBlog(blogid):
@@ -85,4 +87,5 @@ def deleteBlog(blogid):
     c.execute(command)
     data = c.fetchall()
 
-#addBlog("bruh", 1, "tre", "ddf")
+addBlog("bruh", 1, "tre", "ddf")
+db.close()
