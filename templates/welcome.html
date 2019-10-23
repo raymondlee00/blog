@@ -1,5 +1,8 @@
 {% block head %}
-  <h1> Welcome to your blog {{username}}!! </h1>
+{% block title %}
+  <h1> Quackheads blog </h1>
+  {% endblock %}
+  <h2> Welcome to your blog {{username}}!! </h2>
 {% endblock %}
 
 {% block content %}
