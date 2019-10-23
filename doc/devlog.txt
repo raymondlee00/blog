@@ -29,3 +29,7 @@ alexT -- 2019-10-22 9:13pm
 rahmanM -- 2019-10-22 23:33
 A lot of good basework today. I fully fleshed out the login logout mechanics and got
 a bunch of people to generate data and help me test it out.
+
+lupeaD -- 2019-10-22 9:09
+Created a flow chart that illustrates the user's experience on the site.
+Started working on pages that allow additions to the database
