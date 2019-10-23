@@ -1,0 +1,18 @@
+{% block head %}
+  <title> Quackheads Blog </title>
+{% endblock %}
+
+{% block content %}
+  <form action = "/createBlog">
+    <fieldset>
+        <legend> Create Post </legend>
+        <br>
+        <label> Title: </label>
+        <input type = "text" id = "postTitle" value = "Enter Title Here" />
+        <br>
+        <label> Post Content </label>
+        <textarea id = "postContent" rows = 3 columns = 80> Your input goes here </textarea>
+        <input type = "submit" id = "submit" value = "Create post" />
+      </fieldset>
+    </form>
+  {% endblock %}
