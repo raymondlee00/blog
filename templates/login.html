@@ -17,7 +17,10 @@
       <br>
       <input type = "submit" name = "sub1" value = "login">
   </form>
+  {% endblock %}
 
-<br>
-<br>
-<a href = "/register"> or register</a>
+  {% block footer %}
+    <form action = "/register">
+      <input type = "submit" name = "sub2" value = "register">
+    </form>
+  {%endblock%}
