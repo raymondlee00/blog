@@ -29,25 +29,27 @@ def register():
 
 @app.route('/auth')
 def auth():
-	if len(request.args) == 1:
-		session.pop("username")
-		pass
-	else:
+	# if len(request.args) == 1:
+	# 	session.pop("username")
+	# 	return("aaaaa")
+	# 	pass
+	# else:
 		# check if uname is in sql
-		command = "SELECT * FROM userinfo where username = '{}'".format(request.args["username"])
-		pair = runsqlcommand(command)
-		if len(pair) == 1:
-			return ("incorrect fool <a href = '/'></a>")
+
+	command = "SELECT * FROM userinfo where username = '{}'".format(request.args["username"])
+	pair = runsqlcommand(command)
+	if len(pair) == 0:
+		return ("incorrect fool <a href = '/'></a>")
+	else:
+		if (request.args["password"] == pair[0][1]):
+			session["username"] = request.args["username"]
+			return redirect("/welcome")
 		else:
-			if (request.args["password"] == pair[0][1]):
-				print("#####################")
-				print(len(request.args))
-				print(type(request.args["username"]))
-				print(type(pair[0][1]))
-				print("#####################")
-				session["username"] = request.args["username"]
-				return ("you are logged in!! " + session["username"])
-				pass
+			return("WRONG PASSWORD" + str(pair))
+
+@app.route('/welcome')
+def welcome():
+	return render_template("welcome.html", username = session["username"])
 
 
 def runsqlcommand(command):
