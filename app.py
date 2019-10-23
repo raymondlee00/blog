@@ -17,6 +17,11 @@ def hello():
     return render_template("login.html")
 
 
+@app.route('/debug')
+def hddd():
+    print(__name__)
+    return session["username"]
+
 @app.route('/register')
 def register():
 	if len(request.args) == 0:
