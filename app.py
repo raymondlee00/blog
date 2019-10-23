@@ -29,12 +29,9 @@ def register():
 
 @app.route('/auth')
 def auth():
-	# if len(request.args) == 1:
-	# 	session.pop("username")
-	# 	return("aaaaa")
-	# 	pass
-	# else:
-		# check if uname is in sql
+	if len(request.args) == 0:
+		session.pop("username")
+		return("<a href = '/'> ur logged out <br>go home</a>")
 
 	command = "SELECT * FROM userinfo where username = '{}'".format(request.args["username"])
 	pair = runsqlcommand(command)
