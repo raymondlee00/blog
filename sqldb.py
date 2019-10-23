@@ -89,3 +89,4 @@ def deleteBlog(blogid):
 
 addBlog("bruh", 1, "tre", "ddf")
 db.close()
+#hi
