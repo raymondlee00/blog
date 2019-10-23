@@ -16,3 +16,8 @@ was necessary.
 
 also began creating functions to manipulate and retrieve data from the database. examples include
 fetchUsername, fetchBlog, fetchAllBlogs, etc...
+
+alexT -- 2019-10-22 9:13pm
+  Created basic.html for the use of flash inheritance in the future
+  Created login.html: basic login page w/user and pass and login button. Also has a link to registration page
+  Created welcome.html: basic welcome page to greet the user after they've been logged in
