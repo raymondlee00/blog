@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     print(__name__)
-    return render_template("appuserdebug.html")
+    return render_template("login.html")
 
 
 @app.route('/register')
