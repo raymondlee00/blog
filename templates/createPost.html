@@ -1,5 +1,6 @@
 {% block head %}
   <title> Quackheads Blog </title>
+  <h1> Quackheads Blog </h1>
 {% endblock %}
 
 {% block content %}
@@ -11,8 +12,14 @@
         <input type = "text" id = "postTitle" value = "Enter Title Here" />
         <br>
         <label> Post Content </label>
-        <textarea id = "postContent" rows = 3 columns = 80> Your input goes here </textarea>
+        <textarea id = "postContent" rows = 3 columns = 100> Your input goes here </textarea>
         <input type = "submit" id = "submit" value = "Create post" />
       </fieldset>
     </form>
+  {% endblock %}
+
+  {% block footer %}
+      <a href="/welcome">Back to homepage</a>
+      <br>
+      <a href="/showall">Show All Blogs</a>
   {% endblock %}
