@@ -1,6 +1,10 @@
 Team Devlog!! Super Exciting
 alexT -- 2019-10-20 6:40pm
-  Finished component list and interaction page.
+  Finished component list and interaction page. We will have one python file which contains necessary functions, sitepaths, and db interaction.
+  The other file will create the database and be run only once so that our database is consistent. We will have login, register, welcome,
+  createBlog, blog, search, and showall html files. Each will be rendered by a different sitepath. At the moment, we plan on allowing Each
+  user a single blog which is automatically displayed when they enter. in the future, we may adapt our code to incorporate multiple blogs for
+  each user.
 
 
 rahmanM -- 2019-10-20 10:54
