@@ -25,3 +25,7 @@ alexT -- 2019-10-22 9:13pm
   Created basic.html for the use of flash inheritance in the future
   Created login.html: basic login page w/user and pass and login button. Also has a link to registration page
   Created welcome.html: basic welcome page to greet the user after they've been logged in
+
+rahmanM -- 2019-10-22 23:33
+A lot of good basework today. I fully fleshed out the login logout mechanics and got
+a bunch of people to generate data and help me test it out.
