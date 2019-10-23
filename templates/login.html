@@ -1,4 +1,12 @@
-    <form method = "GET" action = "/auth">
+{% extends 'basic.html' %}
+  {% block head %}
+
+  {%endblock%}
+
+  {% block content %}
+    <p> Login Below: </p>
+    <br>
+    <form action = "/auth">
       <p> Username: </p>
       <input type = "text" name = "username">
       <br>
