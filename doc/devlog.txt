@@ -16,3 +16,7 @@ was necessary.
 
 also began creating functions to manipulate and retrieve data from the database. examples include
 fetchUsername, fetchBlog, fetchAllBlogs, etc...
+
+rahmanM -- 2019-10-22 23:33
+A lot of good basework today. I fully fleshed out the login logout mechanics and got
+a bunch of people to generate data and help me test it out.
