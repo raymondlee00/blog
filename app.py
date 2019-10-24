@@ -4,6 +4,7 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from flask import session
+import time
 import sqlite3   #enable control of an sqlite database
 import sqldb
 
@@ -20,9 +21,7 @@ def hello():
     print(__name__)
     return render_template("login.html")
 
-#dgfdfgdfgdfgdfgdfg
-# dfgdfgdfg
-# sdfgdrgdfgdg
+
 @app.route('/debug')
 def hddd():
     print(__name__)
@@ -59,6 +58,14 @@ def auth():
 def welcome():
 	return render_template("welcome.html", username = session["username"])
 
+
+@app.route('/addpost')
+def postadd():
+	title = request.args["postTitle"]
+	content = request.args["postContent"]
+	command = "INSERT INTO bloginfo VALUES('{}', {}, '{}', '{}')".format(session["username"], time.time(), title, content)
+	runsqlcommand(command)
+	return "inserted"
 
 @app.route('/search')
 def search():
