@@ -42,6 +42,13 @@ cleaned up existing html
 all html files ready for implementation of jinja
 added sitemaps to make the website navigable in what we have so far
 
-lupeaD -- 2019-10-22 9:55pm
+lupeaD -- 2019-10-23 9:55pm
 Enabled web page to display whether user or password are incorrect on login.
 Once you successfully register, automatically redirects you to your new home page rather than making you log in again
+
+alexO -- 2019-10-23 11:45pm
+Created and finished previous requested blog data retrival functions
+
+alexO -- 2019-10-23 12:11pm
+Discovered errors in delete functions and fixed them
+ 
