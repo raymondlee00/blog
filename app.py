@@ -12,7 +12,7 @@ app.secret_key = 'hfjkafhrku'
 @app.route('/test')
 def test():
     print(__name__)
-    return render_template("createPost.html")##For html testing purposes
+    return render_template("results.html")##For html testing purposes
 
 
 @app.route('/')
