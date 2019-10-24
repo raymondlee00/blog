@@ -112,6 +112,7 @@ def fetchUserContent(user):
     return dict.values()
 
 #returns all posts and corresponding content a user has created as a dictionary
+
 def fetchUserBlog(user):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
@@ -154,5 +155,7 @@ def printBlogT():
     print(data)
 
 #------------------------------------------------------------------------------
+print(fetchUserBlog("alex"))
+
 db.commit()
 db.close()

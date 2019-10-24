@@ -9,6 +9,8 @@ import time
 import sqlite3   #enable control of an sqlite database
 import sqldb
 
+print(sqldb.fetchUserBlog("alex"))
+
 app = Flask(__name__)
 app.secret_key = 'hfjkafhrku'
 @app.route('/test')
@@ -73,7 +75,7 @@ def welcome():
 def postadd():
 	title = request.args["postTitle"]
 	content = request.args["postContent"]
-	command = "INSERT INTO bloginfo VALUES('{}', {}, '{}', '{}')".format(session["username"], time.time(), title, content)
+	command = "INSERT INTO bloginfo VALUES('{}','{}', '{}')".format(session["username"], title, content)
 	runsqlcommand(command)
 	flash("added post alright")
 	return redirect("/welcome")
