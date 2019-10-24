@@ -10,16 +10,16 @@ c = db.cursor()               #facilitate db ops
 #create table to store user information
 #row[0] = username
 #row[1] = password
-#command = "CREATE TABLE userinfo(username TEXT, password TEXT);"
-#c.execute(command) # run SQL statement
+command = "CREATE TABLE userinfo(username TEXT, password TEXT);"
+c.execute(command) # run SQL statement
 
 #create table to store blog information
 #row[0] = username of blog creator
 #row[1] = blogid
 #row[2] = blog title
 #row[3] = blog content
-#command = "CREATE TABLE bloginfo(username TEXT, blogid INTEGER, title TEXT, content TEXT);"
-#c.execute(command) # run SQL statement
+command = "CREATE TABLE bloginfo(username TEXT, title TEXT, content TEXT);"
+c.execute(command) # run SQL statement
 
 #==============================================================================
 
@@ -37,30 +37,42 @@ def fetchPassword(username):
 
 #adds a user to the userinfo table
 def addUser(username, password):
-    command = "SELECT * FROM userinfo"
+    command = "INSERT INTO bloginfo VALUES('{}', '{}')".format(username, password)
     c.execute(command)
-    data = c.fetchall()
+    db.commit()
 
 #______________________________________________________________________________
 
 #BLOGINFO TABLE COMMANDS
-#returns blog title given its blogid
-def fetchBlogTitle(blogid):
-    command = "SELECT * FROM bloginfo"
-    c.execute(command)
-    data = c.fetchall()
-    for row in data:
-        if row[1] == blogid:
-            return row[2]
 
-#returns blog content given its blogid
-def fetchBlogContent(blogid):
+def fetchBlogTitle(username):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
     data = c.fetchall()
     for row in data:
-        if row[1] == blogid:
+        if row[0] == username:
+            return row[1]
+
+
+def fetchBlogContent(username):
+    command = "SELECT * FROM bloginfo"
+    c.execute(command)
+    data = c.fetchall()
+    for row in data:
+        if row[0] == username:
             return row[3]
+
+
+def fetchBlog(username):
+    command = "SELECT * FROM bloginfo"
+    c.execute(command)
+    data = c.fetchall()
+    dict = {}
+    for row in data:
+        if row[0] == username:
+            dict.update( {row[1] : row[2]} )
+    return dict
+
 
 #returns all blog titles
 def fetchAllBlogTitles():
@@ -76,7 +88,7 @@ def fetchAllBlogContent():
 
 #adds a post to the blogs table
 def addBlog(username, blogid, title, content):
-    command = "INSERT INTO bloginfo VALUES('{}', {}, '{}', '{}')".format(username, blogid, title, content)
+    command = "INSERT INTO bloginfo VALUES('{}','{}', '{}')".format(username, title, content)
     c.execute(command)
     db.commit()
 
@@ -87,6 +99,5 @@ def deleteBlog(blogid):
     c.execute(command)
     data = c.fetchall()
 
-addBlog("bruh", 1, "tre", "ddf")
+db.commit()
 db.close()
-#hi
