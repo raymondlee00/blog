@@ -33,3 +33,11 @@ a bunch of people to generate data and help me test it out.
 lupeaD -- 2019-10-22 9:09
 Created a flow chart that illustrates the user's experience on the site.
 Started working on pages that allow additions to the database
+
+alexT -- 2019-10-23 9:25pm
+Created createPost.html, results.html, search.html
+form in createPost which sends post title and content to welcome.html
+form in search and in results which send input to /results to be searched for and sent back to results.html
+cleaned up existing html
+all html files ready for implementation of jinja
+added sitemaps to make the website navigable in what we have so far
