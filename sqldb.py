@@ -47,6 +47,7 @@ def fetchPassword(user):
          else:
             return None
 
+#returns all users in userinfo database as a list
 def fetchAllUsers():
     command = "SELECT * FROM userinfo"
     c.execute(command)
@@ -56,17 +57,29 @@ def fetchAllUsers():
         list.append(row[0])
     return list
 
-#adds a user to the userinfo table
+#returns all passwords in userinfo database as a list
+def fetchAllPasswords():
+    command = "SELECT * FROM userinfo"
+    c.execute(command)
+    data = c.fetchall()
+    list = []
+    for row in data:
+        list.append(row[1])
+    return list
+
+#adds a user to the userinfo database
 def addUser(user, password):
     command = "INSERT INTO userinfo VALUES('{}', '{}')".format(user, password)
     c.execute(command)
     db.commit()
 
+#deletes a user from the userinfo databse
 def deleteUser(user):
     command = "DELETE FROM userinfo WHERE username = '{}' ;".format(user)
     c.execute(command)
     data = c.fetchall()
 
+#prints userinfo database
 def printUserT():
     command = "SELECT * FROM userinfo"
     c.execute(command)
@@ -76,7 +89,7 @@ def printUserT():
 #------------------------------------------------------------------------------
 #BLOGINFO TABLE COMMANDS
 
-#returns all post titles a user has created
+#returns all post titles a user has created as a list
 def fetchUserTitles(user):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
@@ -87,8 +100,7 @@ def fetchUserTitles(user):
             dict.update( {row[1] : row[2]})
     return dict.keys()
 
-
-#returns all post content a user has created
+#returns all post content a user has created as a list
 def fetchUserContent(user):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
@@ -122,18 +134,19 @@ def fetchAllBlogContent():
     c.execute(command)
     data = c.fetchall()
 
-#adds a post to bloginfo table
+#adds a post to bloginfo database
 def addPost(user, title, content):
     command = "INSERT INTO bloginfo VALUES('{}', '{}', '{}')".format(user, title, content)
     c.execute(command)
     db.commit()
 
-#deletes a blog from the blogs table
+#deletes all posts(a blog) of a user from bloginfo database
 def deleteBlog(user):
     command = "DELETE FROM userinfo WHERE username = '{}' ;".format(user)
     c.execute(command)
     data = c.fetchall()
 
+#prints bloginfo database
 def printBlogT():
     command = "SELECT * FROM bloginfo"
     c.execute(command)
