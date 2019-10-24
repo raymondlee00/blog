@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+	{{get_flashed_messages()[0]}} <br>
   <a href="/createPost">Create New Post</a>
   <fieldset>
       <legend> Posts: </legend>
