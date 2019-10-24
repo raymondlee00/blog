@@ -47,13 +47,13 @@ def auth():
 	command = "SELECT * FROM userinfo where username = '{}'".format(request.args["username"])
 	pair = runsqlcommand(command)
 	if len(pair) == 0:
-		return ("incorrect fool <a href = '/'>  to shame with you</a>")
+		return render_template("login.html", error = "Your username is unfortunately WRONG")
 	else:
 		if (request.args["password"] == pair[0][1]):
 			session["username"] = request.args["username"]
 			return redirect("/welcome")
 		else:
-			return("WRONG PASSWORD" + str(pair))
+			return render_template("login.html", error = "Your password is unfortunately WRONG")
 
 @app.route('/welcome')
 def welcome():
