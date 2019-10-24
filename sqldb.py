@@ -53,38 +53,42 @@ def addUser(user, password):
     c.execute(command)
     db.commit()
 
-def printUserT():
-    command = "SELECT * FROM userinfo"
-    c.execute(command)
-    data = c.fetchall()
-    print(data)
-
 def deleteUser(user):
     command = "DELETE FROM userinfo WHERE username = '{}' ;".format(user)
     c.execute(command)
     data = c.fetchall()
 
-
+def printUserT():
+    command = "SELECT * FROM userinfo"
+    c.execute(command)
+    data = c.fetchall()
+    print(data)
 #______________________________________________________________________________
 #BLOGINFO TABLE COMMANDS
 
 #returns blog title given corresponding username
-def fetchBlogTitle(user):
+def fetchBlogTitles(user):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
     data = c.fetchall()
+    dict = {}
     for row in data:
         if row[0] == user:
-            return row[1]
+            dict.update( {row[1] : row[2]})
+    return dict.keys()
+
 
 #returns blog content given corresponding username
 def fetchBlogContent(user):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
     data = c.fetchall()
+    dict = {}
     for row in data:
         if row[0] == user:
-            return row[3]
+            dict.update( {row[1] : row[2]})
+    return dict.values()
+            
 
 #returns blog title and content as a dictionary
 #title is the dict key and content is corresponding dict value
@@ -111,10 +115,13 @@ def fetchAllBlogContent():
     data = c.fetchall()
 
 #adds a post to bloginfo table
-def addBlog(user, title, content):
+def addPost(user, title, content):
     command = "INSERT INTO bloginfo VALUES('{}', '{}', '{}')".format(user, title, content)
     c.execute(command)
     db.commit()
+
+def addPost(user):
+
 
 #deletes a blog from the blogs table
 def deleteBlog(user):
