@@ -4,20 +4,21 @@
 {% endblock %}
 
 {% block content %}
-  <form action = "/welcome">
+  <form action = "/addpost">
     <fieldset>
         <legend> Create Post </legend>
         <br>
         <label> Title: </label>
-        <input type = "text" id = "postTitle" value = "Enter Title Here" />
+        <input type="text" name="postTitle" value="Enter Title Here" />
         <br>
         <br>
         <label> Post Content: </label>
         <br>
-        <textarea id = "postContent" rows = "3" columns = "200"> Your input goes here </textarea>
-        <input type = "submit" id = "submit" value = "Create post" />
+        <textarea name="postContent" rows="3" columns="200"> Your input goes here </textarea>
+        <input type="submit" id="submit" value="Create post" />
       </fieldset>
     </form>
+
   {% endblock %}
 
   {% block footer %}
