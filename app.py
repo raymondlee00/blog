@@ -19,10 +19,10 @@ def test():
 
 @app.route('/')
 def hello():
-    print(__name__)
-    if "username" in session:
-        return redirect("/welcome")
-    return render_template("login.html")
+	print(__name__)
+	if "username" in session:
+		return redirect("/welcome")
+	return render_template("login.html")
 
 
 @app.route('/debug')
@@ -36,10 +36,15 @@ def register():
 	if len(request.args) == 0:
 		return render_template("register.html")
 	else:
-		command = "INSERT INTO userinfo VALUES('{}','{}');".format(request.args["usernamein"], request.args["passwordin"])
-		runsqlcommand(command)
-		session["usernamein"] = request.args["passwordin"]
-		return redirect("/welcome")
+		existencecommand = "SELECT * FROM userinfo WHERE username = '{}'".format(request.args["usernamein"])
+		if(len(runsqlcommand(existencecommand)) == 0):
+			command = "INSERT INTO userinfo VALUES('{}','{}');".format(request.args["usernamein"], request.args["passwordin"])
+			runsqlcommand(command)
+			session["usernamein"] = request.args["passwordin"]
+			return redirect("/welcome")
+		else:
+			flash("username already exists")
+			return redirect("/register")
 
 
 @app.route('/auth')
