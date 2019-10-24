@@ -4,6 +4,7 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from flask import session
+from flask import flash
 import time
 import sqlite3   #enable control of an sqlite database
 import sqldb
@@ -18,8 +19,10 @@ def test():
 
 @app.route('/')
 def hello():
-	print(__name__)
-	return render_template("login.html")
+    print(__name__)
+    if "username" in session:
+        return redirect("/welcome")
+    return render_template("login.html")
 
 
 @app.route('/debug')
@@ -43,7 +46,7 @@ def register():
 def auth():
 	if len(request.args) == 0:
 		session.pop("username")
-		return("<a href = '/'> ur logged out <br>go home</a>")
+		return redirect("/")
 
 	command = "SELECT * FROM userinfo where username = '{}'".format(request.args["username"])
 	pair = runsqlcommand(command)
@@ -67,7 +70,8 @@ def postadd():
 	content = request.args["postContent"]
 	command = "INSERT INTO bloginfo VALUES('{}', {}, '{}', '{}')".format(session["username"], time.time(), title, content)
 	runsqlcommand(command)
-	return "inserted"
+	flash("added post alright")
+	return redirect("/welcome")
 
 @app.route('/search')
 def search():
