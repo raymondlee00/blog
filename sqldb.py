@@ -47,6 +47,11 @@ def fetchPassword(user):
          else:
             return None
 
+def fetchAllUsers():
+    command = "SELECT * FROM userinfo"
+    c.execute(command)
+    data = c.fetchall()
+
 #adds a user to the userinfo table
 def addUser(user, password):
     command = "INSERT INTO userinfo VALUES('{}', '{}')".format(user, password)
@@ -68,7 +73,7 @@ def printUserT():
 #BLOGINFO TABLE COMMANDS
 
 #returns all post titles a user has created
-def fetchAllTitles(user):
+def fetchUserTitles(user):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
     data = c.fetchall()
@@ -80,7 +85,7 @@ def fetchAllTitles(user):
 
 
 #returns all post content a user has created
-def fetchAllContent(user):
+def fetchUserContent(user):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
     data = c.fetchall()
@@ -91,7 +96,7 @@ def fetchAllContent(user):
     return dict.values()
 
 #returns all posts and corresponding content a user has created as a dictionary
-def fetchBlog(user):
+def fetchUserBlog(user):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
     data = c.fetchall()
@@ -132,10 +137,5 @@ def printBlogT():
     print(data)
 
 #------------------------------------------------------------------------------
-#addUser("alex","pass")
-#addPost("alex","hi","hello world")
-
-print(fetchBlogContent("alex"))
-
 db.commit()
 db.close()
