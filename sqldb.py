@@ -51,6 +51,10 @@ def fetchAllUsers():
     command = "SELECT * FROM userinfo"
     c.execute(command)
     data = c.fetchall()
+    list = []
+    for row in data:
+        list.append(row[0])
+    return list
 
 #adds a user to the userinfo table
 def addUser(user, password):
