@@ -1,0 +1,30 @@
+{% block head %}
+  <title> Quackheads Blog </title>
+  <h1> Quackheads Blog </h1>
+{% endblock %}
+
+{% block content %}
+  <form action = "/results">
+    <fieldset>
+        <legend> Search </legend>
+        <br>
+        <label> Enter Keywords: </label>
+        <input type = "text" name = "searchInput" value = "Keyword" />
+        <input type = "submit" id = "submit" value = "Search" />
+      </fieldset>
+    </form>
+  <form action = "/viewBlog">
+    <fieldset>
+      <legend> Results: </legend>
+      <br>
+      <p> will use variable bloglist from python file to loop through and print out each with button to blog on the right of each</p>
+
+    </fieldset>
+  </form>
+  {% endblock %}
+
+  {% block footer %}
+      <a href="/welcome">Back to homepage</a>
+      <br>
+      <a href="/showall">Show All Blogs</a>
+  {% endblock %}

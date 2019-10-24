@@ -6,9 +6,23 @@
 {% endblock %}
 
 {% block content %}
-  <h3> Posts: </h3>
+	{{get_flashed_messages()[0]}} <br>
+  <a href="/createPost">Create New Post</a>
+  <fieldset>
+      <legend> Posts: </legend>
   <p> implementation soon to come </p>
+  </fieldset>
 
+
+
+  <br>
+    <a href="/showall">Show All Blogs</a>
+    <br>
+    <a href="/search">Search Blogs</a>
   <br><br>
   <a href = "/auth">logout</a>
+{% endblock %}
+
+{% block footer %}
+
 {% endblock %}
