@@ -41,7 +41,7 @@ def register():
 			command = "INSERT INTO userinfo VALUES('{}','{}');".format(request.args["usernamein"], request.args["passwordin"])
 			runsqlcommand(command)
 			session["usernamein"] = request.args["passwordin"]
-			return redirect("/welcome")
+			return redirect("/")
 		else:
 			flash("username already exists")
 			return redirect("/register")
