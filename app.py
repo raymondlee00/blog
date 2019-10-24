@@ -60,6 +60,22 @@ def welcome():
 	return render_template("welcome.html", username = session["username"])
 
 
+@app.route('/search')
+def search():
+    return render_template("search.html")
+
+@app.route('/results')
+def results():
+    return render_template("results.html")
+
+@app.route('/createPost')
+def createPost():
+    return render_template("createPost.html")
+
+@app.route('/showall')
+def showall():
+    return render_template("showall.html")
+
 def runsqlcommand(command):
 	DB_FILE="glit.db"
 	db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
@@ -69,7 +85,6 @@ def runsqlcommand(command):
 		return c.fetchall()
 	db.commit() #save changes
 	db.close()  #close database
-
 
 
 if __name__ == '__main__':
