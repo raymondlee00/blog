@@ -20,7 +20,7 @@ c = db.cursor()               #facilitate db ops
 #command = "CREATE TABLE bloginfo(username TEXT, title TEXT, content TEXT);"
 #c.execute(command) # run SQL statement
 
-#______________________________________________________________________________
+#------------------------------------------------------------------------------
 #USERINFO TABLE COMMANDS
 
 #returns username as string given corresponding password
@@ -63,11 +63,12 @@ def printUserT():
     c.execute(command)
     data = c.fetchall()
     print(data)
-#______________________________________________________________________________
+
+#------------------------------------------------------------------------------
 #BLOGINFO TABLE COMMANDS
 
-#returns blog title given corresponding username
-def fetchBlogTitles(user):
+#returns all post titles a user has created
+def fetchAllTitles(user):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
     data = c.fetchall()
@@ -78,8 +79,8 @@ def fetchBlogTitles(user):
     return dict.keys()
 
 
-#returns blog content given corresponding username
-def fetchBlogContent(user):
+#returns all post content a user has created
+def fetchAllContent(user):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
     data = c.fetchall()
@@ -88,10 +89,8 @@ def fetchBlogContent(user):
         if row[0] == user:
             dict.update( {row[1] : row[2]})
     return dict.values()
-            
 
-#returns blog title and content as a dictionary
-#title is the dict key and content is corresponding dict value
+#returns all posts and corresponding content a user has created as a dictionary
 def fetchBlog(user):
     command = "SELECT * FROM bloginfo"
     c.execute(command)
@@ -120,9 +119,6 @@ def addPost(user, title, content):
     c.execute(command)
     db.commit()
 
-def addPost(user):
-
-
 #deletes a blog from the blogs table
 def deleteBlog(user):
     command = "DELETE FROM userinfo WHERE username = '{}' ;".format(user)
@@ -134,6 +130,12 @@ def printBlogT():
     c.execute(command)
     data = c.fetchall()
     print(data)
+
+#------------------------------------------------------------------------------
+#addUser("alex","pass")
+#addPost("alex","hi","hello world")
+
+print(fetchBlogContent("alex"))
 
 db.commit()
 db.close()
