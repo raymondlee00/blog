@@ -1,0 +1,22 @@
+{% block head %}
+  <title> Quackheads Blog </title>
+  <h1> Quackheads Blog </h1>
+{% endblock %}
+
+{% block content %}
+<a href="/welcome">Back to homepage</a>
+<br>
+<a href="/search">Search Blogs</a>
+
+  <form action = "/viewBlog">
+    <fieldset>
+      <legend> All Blogs: </legend>
+      <br>
+      <p> will use variable bloglist from python file to loop through and print out each with button to blog on the right of each</p>
+
+    </fieldset>
+  </form>
+  {% endblock %}
+
+  {% block footer %}
+  {% endblock %}
