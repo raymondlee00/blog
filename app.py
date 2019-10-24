@@ -11,23 +11,24 @@ app = Flask(__name__)
 app.secret_key = 'hfjkafhrku'
 @app.route('/test')
 def test():
-    print(__name__)
-    return render_template("results.html")##For html testing purposes
+	print(__name__)
+	return render_template("results.html")##For html testing purposes
 
 
 @app.route('/')
 def hello():
-    print(__name__)
-    return render_template("login.html")
+	print(__name__)
+	return render_template("login.html")
 
 #dgfdfgdfgdfgdfgdfg
 # dfgdfgdfg
 # sdfgdrgdfgdg
 @app.route('/debug')
 def hddd():
-    print(__name__)
-    return session["username"]
+	print(__name__)
+	return session["username"]
 
+#REdirect to hmer
 @app.route('/register')
 def register():
 	if len(request.args) == 0:
@@ -35,7 +36,8 @@ def register():
 	else:
 		command = "INSERT INTO userinfo VALUES('{}','{}');".format(request.args["usernamein"], request.args["passwordin"])
 		runsqlcommand(command)
-		return "you are now registered!! <br> <br> <a href = '/'> go to login </a>"
+		session["usernamein"] = request.args["passwordin"]
+		return redirect("/welcome")
 
 
 @app.route('/auth')
@@ -62,19 +64,19 @@ def welcome():
 
 @app.route('/search')
 def search():
-    return render_template("search.html")
+	return render_template("search.html")
 
 @app.route('/results')
 def results():
-    return render_template("results.html")
+	return render_template("results.html")
 
 @app.route('/createPost')
 def createPost():
-    return render_template("createPost.html")
+	return render_template("createPost.html")
 
 @app.route('/showall')
 def showall():
-    return render_template("showall.html")
+	return render_template("showall.html")
 
 def runsqlcommand(command):
 	DB_FILE="glit.db"
@@ -88,5 +90,5 @@ def runsqlcommand(command):
 
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run()
+	app.debug = True
+	app.run()
