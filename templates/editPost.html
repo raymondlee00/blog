@@ -1,0 +1,28 @@
+{% block head %}
+  <title> Quackheads Blog </title>
+  <h1> Quackheads Blog </h1>
+{% endblock %}
+
+{% block content %}
+  <form action = "/addpost">
+    <fieldset>
+        <legend> Create Post </legend>
+        <br>
+        <label> Title: </label>
+        <input type="text" name="postTitle" placeholder="{{post[0]}}" />
+        <br>
+        <br>
+        <label> Post Content: </label>
+        <br>
+        <textarea name="postContent" rows="3" columns="200" placeholder="enter content"> {{post[1]}}</textarea>
+        <input type="submit" id="submit" value="Edit post" />
+      </fieldset>
+    </form>
+
+  {% endblock %}
+
+  {% block footer %}
+      <a href="/welcome">Back to homepage</a>
+      <br>
+      <a href="/showall">Show All Blogs</a>
+  {% endblock %}

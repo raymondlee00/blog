@@ -9,7 +9,6 @@ import time
 import sqlite3   #enable control of an sqlite database
 import sqldb
 
-print(sqldb.fetchUserBlog("alex"))
 
 app = Flask(__name__)
 app.secret_key = 'hfjkafhrku'
