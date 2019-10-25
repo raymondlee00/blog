@@ -67,7 +67,13 @@ def auth():
 
 @app.route('/welcome')
 def welcome():
-	return render_template("welcome.html", username = session["username"])
+	command = "SELECT * FROM bloginfo where username = '{}'".format(session["username"])
+	rawdat = runsqlcommand(command)
+	allposts = {}
+	for x in rawdat:
+		allposts[x[1]] = x[2]
+	print(allposts)
+	return render_template("welcome.html", username = session["username"], posts = allposts)
 
 
 @app.route('/addpost')
