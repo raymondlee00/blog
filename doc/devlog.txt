@@ -51,4 +51,12 @@ Created and finished previous requested blog data retrival functions
 
 alexO -- 2019-10-23 12:11pm
 Discovered errors in delete functions and fixed them
- 
+
+alexT -- 2019-10-24 9:53pm
+created branch addingJinja and htmlTest.py to test html files without effecting other code
+cleaned up html code using <fieldset>. **Note that there is still no CSS fieldsets are html**
+Created editPost.html: Very similar to createPost with a few minor changes
+added and tested jinja functionality in welcome, results, and editPost
+welcome gets a username variable and a posts variable. user is a string, posts is a dict
+results is same as welcome. Both loop through the dict displaying all of the posts sent to them in an organized fashion
+editPost gets the post content and postTitle so that it can be sufficiently edited.
