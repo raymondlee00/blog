@@ -7,7 +7,6 @@ from flask import session
 from flask import flash
 import time
 import sqlite3   #enable control of an sqlite database
-import sqldb
 
 app = Flask(__name__)
 app.secret_key = 'hfjkafhrku'
