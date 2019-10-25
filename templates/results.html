@@ -13,14 +13,21 @@
         <input type = "submit" id = "submit" value = "Search" />
       </fieldset>
     </form>
-  <form action = "/viewBlog">
+
     <fieldset>
       <legend> Results: </legend>
       <br>
-      <p> will use variable bloglist from python file to loop through and print out each with button to blog on the right of each</p>
-
+      <form action = "/viewBlog">
+      {% for postTitle in posts %}
+      <fieldset>
+        <h4> {{postTitle}} </h4>
+        <pre> {{posts[postTitle]}} </pre>
+        <button type="submit" name="Edit" value="{{postTitle}}">View</button>
+      </fieldset>
+      <br>
+      {% endfor %}
+      </form>
     </fieldset>
-  </form>
   {% endblock %}
 
   {% block footer %}
