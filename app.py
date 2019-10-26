@@ -110,7 +110,11 @@ def createPost():
 
 @app.route('/showall')
 def showall():
-	return render_template("showall.html")
+	command = "SELECT username FROM userinfo"
+	allusers = runsqlcommand(command)
+	print(type(allusers[0]))
+	print(allusers)
+	return render_template("showall.html", usernames = allusers)
 
 def runsqlcommand(command):
 	DB_FILE="glit.db"
