@@ -9,12 +9,11 @@
 <a href="/search">Search Blogs</a>
 
   <form action = "/viewBlog">
-    <fieldset>
-      <legend> All Blogs: </legend>
-      <br>
-      <p> will use variable bloglist from python file to loop through and print out each with button to blog on the right of each</p>
+          {% for user in usernames%}
+          <input type="submit" name=selecteduser value="{{user[0]}}"{{user[0]}}></input>
+          <br><br>
+          {% endfor %}
 
-    </fieldset>
   </form>
   {% endblock %}
 
