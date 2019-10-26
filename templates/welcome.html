@@ -10,12 +10,11 @@
   <a href="/createPost">Create New Post</a>
   <fieldset>
       <legend> Posts: </legend>
-  <form action = "/editPost">
+  <form action = "/delete">
   {% for postTitle in posts %}
   <fieldset>
     <h4> {{postTitle}} </h4>
     <pre> {{posts[postTitle]}} </pre>
-    <button type="submit" name="postTitle" value="{{postTitle}}">Edit</button>
     <button type="submit" name="postTitle" value="{{postTitle}}">Delete</button>
   </fieldset>
   <br>

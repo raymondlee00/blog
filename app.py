@@ -88,6 +88,14 @@ def postadd():
 	flash("added post alright")
 	return redirect("/welcome")
 
+@app.route("/delete")
+def delete():
+	entrytodelete = request.args["postTitle"]
+	command = "DELETE FROM bloginfo WHERE title = '{}'".format(entrytodelete)
+	runsqlcommand(command)
+	return "deleted alright"
+
+
 @app.route('/search')
 def search():
 	return render_template("search.html")
