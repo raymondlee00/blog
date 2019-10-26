@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-  </head>
-  <body>
-          {{get_flashed_messages()[0]}} <br>
-	  <form class="none" action="/register" method="get">
-		<input type="text" name="usernamein" placeholder="username">
-		<input type="password" name="passwordin" placeholder="password">
-		<br>
-		<br>
-	  	<button type="submit" name="button"> SUBMIT</button>
-	  </form>
-  </body>
-</html>
+
+{% block head %}
+  <meta charset="UTF-8">
+  <title>Register</title>
+{% endblock %}
+
+{% block content %}
+  {{get_flashed_messages()[0]}} <br>
+  <form class="none" action="/register" method="get">
+    <input type="text" name="usernamein" placeholder="username">
+    <input type="password" name="passwordin" placeholder="password">
+    <br>
+    <br>
+    <button type="submit" name="button"> SUBMIT</button>
+  </form>
+{% endblock %}
