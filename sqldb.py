@@ -155,7 +155,6 @@ def printBlogT():
     print(data)
 
 #------------------------------------------------------------------------------
-print(fetchUserBlog("alex"))
 
 db.commit()
 db.close()
