@@ -18,10 +18,10 @@
   <legend> Results: </legend>
   <br>
   <form action="/viewBlog">
-    {% for postTitle in results %}
+    {% for post in results %}
     <fieldset>
-      <h4> {{postTitle}} </h4>
-      <pre> {{results[postTitle]}} </pre>
+      <h4> {{post[1]}} &nbsp&nbsp&nbsp|| posted by {{post[0]}}</h4>
+      <pre> {{post[2]}} </pre>
       <button type="submit" name="view blog" value="{{postTitle}}">View</button>
     </fieldset>
     <br>

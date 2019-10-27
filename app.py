@@ -112,17 +112,19 @@ def search():
 def results():
     searchInput = request.args["searchInput"].lower()
     length = len(searchInput)
-    command = "SELECT title, content FROM bloginfo"
+    command = "SELECT * FROM bloginfo where lower(title) LIKE '%{}%'".format(
+        searchInput)
     allPosts = runsqlcommand(command)
-    results = {}
-    for post in allPosts:
-        title = post[0]
-        content = post[1]
-        titlecomp = title.lower()
-        if (titlecomp.__contains__(searchInput)):
-            results[title] = content
+    print(allPosts)
+    # results = {}
+    # for post in allPosts:
+    #     title = post[0]
+    #     content = post[1]
+    #     titlecomp = title.lower()
+    #     if (titlecomp.__contains__(searchInput)):
+    #         results[title] = content
 
-    return render_template("results.html", results=results)
+    return render_template("results.html", results = allPosts)
 
 
 @app.route('/createPost')
