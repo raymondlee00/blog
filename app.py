@@ -140,6 +140,15 @@ def showall():
     print(allusers)
     return render_template("showall.html", usernames=allusers)
 
+@app.route('/viewBlog')
+def viewBlog():
+    command = "SELECT * FROM bloginfo"
+    data = runsqlcommand(command)
+    dict = {}
+    for row in data:
+        if row[0] == request.args["selecteduser"]:
+            dict.update( {row[1] : row[2]} )
+    return render_template("viewBlog.html", posts = dict)
 
 def runsqlcommand(command):
     DB_FILE = "glit.db"
