@@ -60,3 +60,10 @@ added and tested jinja functionality in welcome, results, and editPost
 welcome gets a username variable and a posts variable. user is a string, posts is a dict
 results is same as welcome. Both loop through the dict displaying all of the posts sent to them in an organized fashion
 editPost gets the post content and postTitle so that it can be sufficiently edited.
+
+alexT -- 2019-10-26 9:37pm
+created search branch to work on search mechanism inside of "/results"
+completed a basic search which searches through the titles of all posts and
+sends a dict of posts whose titles contain the search input.
+We will have to decide if we want to include post content in search.
+results takes in the results dict and lists posts with a view button under each

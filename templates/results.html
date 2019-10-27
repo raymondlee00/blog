@@ -1,37 +1,37 @@
 {% block head %}
-  <title> Quackheads Blog </title>
-  <h1> Quackheads Blog </h1>
+<title> Quackheads Blog </title>
+<h1> Quackheads Blog </h1>
 {% endblock %}
 
 {% block content %}
-  <form action = "/results">
-    <fieldset>
-        <legend> Search </legend>
-        <br>
-        <label> Enter Keywords: </label>
-        <input type = "text" name = "searchInput" value = "Keyword" />
-        <input type = "submit" id = "submit" value = "Search" />
-      </fieldset>
-    </form>
+<form action="/results">
+  <fieldset>
+    <legend> Search </legend>
+    <br>
+    <label> Enter Keywords: </label>
+    <input type="text" name="searchInput" value="Keyword" />
+    <input type="submit" id="submit" value="Search" />
+  </fieldset>
+</form>
 
+<fieldset>
+  <legend> Results: </legend>
+  <br>
+  <form action="/viewBlog">
+    {% for postTitle in results %}
     <fieldset>
-      <legend> Results: </legend>
-      <br>
-      <form action = "/viewBlog">
-      {% for postTitle in posts %}
-      <fieldset>
-        <h4> {{postTitle}} </h4>
-        <pre> {{posts[postTitle]}} </pre>
-        <button type="submit" name="Edit" value="{{postTitle}}">View</button>
-      </fieldset>
-      <br>
-      {% endfor %}
-      </form>
+      <h4> {{postTitle}} </h4>
+      <pre> {{results[postTitle]}} </pre>
+      <button type="submit" name="view blog" value="{{postTitle}}">View</button>
     </fieldset>
-  {% endblock %}
+    <br>
+    {% endfor %}
+  </form>
+</fieldset>
+{% endblock %}
 
-  {% block footer %}
-      <a href="/welcome">Back to homepage</a>
-      <br>
-      <a href="/showall">Show All Blogs</a>
-  {% endblock %}
+{% block footer %}
+<a href="/welcome">Back to homepage</a>
+<br>
+<a href="/showall">Show All Blogs</a>
+{% endblock %}
