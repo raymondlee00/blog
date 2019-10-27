@@ -1,0 +1,18 @@
+{% block header %}
+<title> Quackheads Blog </title>
+<h1> Quackheads Blog </h1>
+<h2> Welcome to {{username}}'s blog!! </h2>
+{% endblock %}
+
+{% block content %}
+<fieldset>
+  <legend> Posts: </legend>
+    {% for postTitle in posts %}
+    <fieldset>
+      <h4> {{postTitle}} </h4>
+      <pre> {{posts[postTitle]}} </pre>
+    </fieldset>
+    <br>
+    {% endfor %}
+  </fieldset>
+    {% endblock %}

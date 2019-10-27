@@ -15,7 +15,7 @@ app.secret_key = 'hfjkafhrku'
 @app.route('/')
 def test():
 	print(__name__)
-	return render_template("welcome.html", username = "alex", posts = {"I am the title":"this is where post content will go.", "I am post2":"beep boop"})##For html testing purposes
+	return render_template("viewBlog.html", username = "alex", posts = {"I am the title":"this is where post content will go.", "I am post2":"beep boop"})##For html testing purposes
 
 ##@app.route('/editPost')
 ##def editPost():
