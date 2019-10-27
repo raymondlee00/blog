@@ -88,6 +88,8 @@ def welcome():
 def postadd():
     title = request.args["postTitle"]
     content = request.args["postContent"]
+    title = title.replace("'", "''")
+    content = content.replace("'", "''")
     command = "INSERT INTO bloginfo VALUES('{}','{}', '{}')".format(
         session["username"], title, content)
     runsqlcommand(command)
@@ -124,7 +126,7 @@ def results():
     #     if (titlecomp.__contains__(searchInput)):
     #         results[title] = content
 
-    return render_template("results.html", results = allPosts)
+    return render_template("results.html", results=allPosts)
 
 
 @app.route('/createPost')
@@ -148,8 +150,8 @@ def viewBlog():
     dict = {}
     for row in data:
         if row[0] == request.args["selecteduser"]:
-            dict.update( {row[1] : row[2]})
-    return render_template("viewBlog.html", posts = dict)
+            dict.update({row[1]: row[2]})
+    return render_template("viewBlog.html", posts=dict)
 
 
 def runsqlcommand(command):
@@ -161,6 +163,7 @@ def runsqlcommand(command):
         return c.fetchall()
     db.commit()  # save changes
     db.close()  # close database
+
 
 if __name__ == '__main__':
     app.debug = True
