@@ -101,15 +101,16 @@ def postadd():
 @app.route("/delete")
 def delete():
     entrytodelete = request.args["delete"]
-    command = "DELETE FROM bloginfo WHERE title = '{}'".format(entrytodelete)
-    runsqlcommand(command)
-
     command = "SELECT * FROM bloginfo"
     data = runsqlcommand(command)
     blogname = ""
     for row in data:
         if entrytodelete == row[1]:
-            blowname = row[3]
+            blogname = row[3]
+    command = "DELETE FROM bloginfo WHERE title = '{}'".format(entrytodelete)
+    runsqlcommand(command)
+
+    print(blogname)
     return redirect(url_for("viewBlog", blogName=blogname))
 
 
