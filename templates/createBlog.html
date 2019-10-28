@@ -4,16 +4,16 @@
 {% endblock %}
 
 {% block content %}
-  <form action = "/addpost">
+  <form action = "/addBlog">
     <fieldset>
-        <legend> Create Post </legend>
+        <legend> Create Blog </legend>
         <br>
         <label> Blog Title: </label>
-        <input type="text" name="postTitle" value="{{post[0]}}" />
+        <input type="text" name="blogName" placeholder = "Blog Title" />
+        <input type="submit" id="submit" value="Create Blog"
         <br>
       </fieldset>
     </form>
-
   {% endblock %}
 
   {% block footer %}

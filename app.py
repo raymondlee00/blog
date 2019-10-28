@@ -130,7 +130,11 @@ def results():
 
     return render_template("results.html", results = allPosts)
 
+<<<<<<< HEAD
 @app.route('/addblog.html')
+=======
+@app.route('/addBlog')
+>>>>>>> 0c9ebad557a3b06c40a9b8ee408f83e563bc47dc
 def addblog():
     #username = session["username"]
     blogname = request.args["blogName"]
@@ -141,10 +145,18 @@ def addblog():
     runsqlcommand(command)
     return redirect("/welcome")
 
+<<<<<<< HEAD
 
 @app.route('/createBlog.html')
 def createBlog():
     return render_template("createBlog.html")
+=======
+@app.route('/createBlog')
+def createBlog():
+    return render_template("createBlog.html")
+
+
+>>>>>>> 0c9ebad557a3b06c40a9b8ee408f83e563bc47dc
 
 
 @app.route('/showall')
