@@ -144,7 +144,15 @@ def addblog():
 def createBlog():
     return render_template("createBlog.html")
 
+@app.route('/edit')
+def editPost():
+    postTitle = request.args["edit"]
+    return render_template("editPost.html")
 
+@app.route('/delete')
+def deletePost():
+    postTitle = request.args["delete"]
+    return render_template("deletePost.html")
 
 
 @app.route('/showall')

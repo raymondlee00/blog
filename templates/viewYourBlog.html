@@ -14,17 +14,19 @@
   <br>
   <fieldset>
       <legend> Posts: </legend>
-  <form action = "/delete">
   {% for postTitle in posts %}
   <fieldset>
     <h4> {{postTitle}} </h4>
     <pre> {{posts[postTitle]}} </pre>
-    <button type="submit" name="edit" value="{{postTitle}}">Edit</button>
-    <button type="submit" name="delete" value="{{postTitle}}">Delete</button>
+    <form action = "/edit">
+      <button type="submit" name="edit" value="{{postTitle}}">Edit</button>
+    </form>
+    <form action = "/delete">
+      <button type="submit" name="delete" value="{{postTitle}}">Delete</button>
+    </form>
   </fieldset>
   <br>
   {% endfor %}
-  </form>
   </fieldset>
 
 
