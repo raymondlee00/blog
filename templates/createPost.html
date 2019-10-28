@@ -4,9 +4,9 @@
 {% endblock %}
 
 {% block content %}
-  <form action = "/viewBlog">
+  <form action = "/addpost">
     <fieldset>
-        <legend> Create Post </legend>
+        <legend> Create Post in {{blogName}} </legend>
         <br>
         <!-- <label> Title: </label> -->
         <input type="text" name="postTitle" placeholder="Enter Title Here" />
@@ -16,7 +16,7 @@
         <br>
         <textarea name="postContent" rows="10" cols="40" placeholder="Enter Post Here"></textarea>
         <br><br>
-        <input type="submit" id="submit" value="Create post" />
+        <button type="submit" name= blogName value={{blogName}}> Create Post </button>
       </fieldset>
     </form>
 

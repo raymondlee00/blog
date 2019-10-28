@@ -82,17 +82,19 @@ def welcome():
 
 @app.route('/createPost')
 def createPost():
-    return render_template("createPost.html")
+    blogName = request.args["blogName"]
+    return render_template("createPost.html", blogName = blogName)
 
 @app.route('/addpost')
 def postadd():
+    blogName = request.args["blogName"]
     title = request.args["postTitle"]
     content = request.args["postContent"]
-    command = "INSERT INTO bloginfo VALUES('{}','{}', '{}')".format(
-        session["username"], title, content)
+    command = "INSERT INTO bloginfo VALUES('{}','{}', '{}', '{}')".format(
+        session["username"], title, content, blogName)
     runsqlcommand(command)
     flash("added post alright")
-    return redirect("/welcome")
+    return redirect("/viewBlog")
 
 
 
