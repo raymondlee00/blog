@@ -154,7 +154,14 @@ def createBlog():
 @app.route('/edit')
 def editPost():
     postTitle = request.args["edit"]
-    return render_template("editPost.html")
+
+    command = "SELECT * FROM bloginfo"
+    data = runsqlcommand(command)
+    dict= {}
+    for row in data:
+        if postTitle = row[1]:
+            dict.update({row[1] : row[2]})
+    return render_template("editPost.html", dict = dict)
 
 
 
