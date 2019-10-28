@@ -172,7 +172,16 @@ def editPost():
     newTitle = request.args["postTitle"]
     newContent = request.args["postContent"]
     oldTitle = request.args["oldTitle"]
-    return render_template(url_for("viewBlog", blogName=blogName))
+    blogName = ""
+
+    command = "SELECT * FROM bloginfo"
+    data = runsqlcommand(command)
+    for row in data:
+        if oldTitle == row[1]:
+            row[1] = newTitle
+            row[2] = newContent
+            blogName = row[3]
+    return render_template(url_for("viewBlog", blogName = blogName))
 
 
 @app.route('/showall')
