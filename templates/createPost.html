@@ -4,6 +4,8 @@
 {% endblock %}
 
 {% block content %}
+{{get_flashed_messages()[0]}}
+<br>
   <form action = "/addpost">
     <fieldset>
         <legend> Create Post in {{blogName}} </legend>

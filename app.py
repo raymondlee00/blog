@@ -91,6 +91,13 @@ def postadd():
     blogName = request.args["blogName"]
     title = request.args["postTitle"]
     content = request.args["postContent"]
+    command = "SELECT * FROM bloginfo"
+    dict = runsqlcommand(command)
+    for row in dict:
+        if (row[1] == title):
+            flash("Title already exists. Change Title")
+            return redirect(url_for("createPost", blogName = blogName))
+
     command = "INSERT INTO bloginfo VALUES('{}','{}', '{}', '{}')".format(
         session["username"], title, content, blogName)
     runsqlcommand(command)
@@ -144,6 +151,13 @@ def addblog():
     blogname = request.args["blogName"]
     title = ""
     content = ""
+    command = "SELECT * FROM bloginfo"
+    dict = runsqlcommand(command)
+    print(dict)
+    for row in dict:
+        if (row[3] == blogname):
+            flash("Blog name already exists. Change it to add it")
+            return redirect("/createBlog")
     command = "INSERT INTO bloginfo VALUES('{}','{}', '{}','{}')".format(
         session["username"], title, content, blogname)
     runsqlcommand(command)
