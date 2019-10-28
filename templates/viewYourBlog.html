@@ -2,11 +2,10 @@
 {% block title %}
   <h1> Quackheads blog </h1>
   {% endblock %}
-  <h2><center> {{blogName}} </h2>
+  <h2> {{blogName}} </h2>
 {% endblock %}
 
 {% block content %}
-<center>
   <form action = "/createPost">
     <button type = "submit" name = blogName value = {{blogName}}> Create Post </button>
   </form>

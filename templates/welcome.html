@@ -2,11 +2,10 @@
 {% block title %}
   <h1> Quackheads blog </h1>
   {% endblock %}
-  <h2><center> Welcome {{username}}!! </h2>
+  <h2>Welcome {{username}}!! </h2>
 {% endblock %}
 
 {% block content %}
-<center>
 	{{get_flashed_messages()[0]}} <br>
   <a href="/createBlog">Create New Blog</a>
   <br>
