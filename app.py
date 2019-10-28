@@ -167,7 +167,7 @@ def viewBlog():
     data = runsqlcommand(command)
     dict = {}
     for row in data:
-        if row[3] == blogName:
+        if row[3] == blogName and not(row[1] == "" and row[2] == ""):
             dict.update({row[1] : row[2]})
             user = row[0]
     print(dict)
