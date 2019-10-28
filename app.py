@@ -94,7 +94,7 @@ def postadd():
         session["username"], title, content, blogName)
     runsqlcommand(command)
     flash("added post alright")
-    return redirect("/viewBlog", blogName = blogName)
+    return redirect(url_for("viewBlog", blogName = blogName))
 
 
 
