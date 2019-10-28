@@ -94,7 +94,7 @@ def postadd():
         session["username"], title, content, blogName)
     runsqlcommand(command)
     flash("added post alright")
-    return redirect("/viewBlog")
+    return redirect("/viewBlog", blogName)
 
 
 
@@ -158,21 +158,22 @@ def showall():
 
 @app.route('/viewBlog')
 def viewBlog():
-    blogname = request.args["blogName"]
+    #if not(blogName in locals()):
+    blogName = request.args["blogName"]
 
     command = "SELECT * FROM bloginfo"
     data = runsqlcommand(command)
     dict = {}
     for row in data:
-        if row[1] == blogname:
+        if row[1] == blogName:
             dict.update({row[2] : row[3]})
             user = row[0]
 
     for row in data:
         if row[0] == session["username"]:
-            return render_template("viewYourBlog.html", posts = dict, blogName = blogname, username = session["username"])
+            return render_template("viewYourBlog.html", posts = dict, blogName = blogName, username = session["username"])
     else:
-        return render_template("viewBlog.html", posts = dict, blogName = blogname, username = user)
+        return render_template("viewBlog.html", posts = dict, blogName = blogName, username = user)
 
 
 def runsqlcommand(command):
