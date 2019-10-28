@@ -136,7 +136,7 @@ def addblog():
     title = ""
     content = ""
     command = "INSERT INTO bloginfo VALUES('{}','{}', '{}','{}')".format(
-        session["username"], title, content, blogName)
+        session["username"], title, content, blogname)
     runsqlcommand(command)
     return redirect("/welcome")
 
