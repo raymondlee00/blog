@@ -2,22 +2,23 @@
 {% block title %}
   <h1> Quackheads blog </h1>
   {% endblock %}
-  <h2><center> Welcome {{username}}!! </h2>
+  <h2><center> {{title}} </h2>
 {% endblock %}
 
 {% block content %}
 <center>
-	{{get_flashed_messages()[0]}} <br>
-  <a href="/createBlog">Create New Blog</a>
+  <a href="/createPost">Create New Post</a>
   <br>
   <br>
   <fieldset>
-      <legend> Blogs: </legend>
+      <legend> Posts: </legend>
   <form action = "/delete">
-  {% for blogName in blogNames %}
+  {% for postTitles in posts %}
   <fieldset>
-    <h4> {{blogName}} </h4>
-    <button type="submit" name="postTitle" value="{{blogName}}">blogName</button>
+    <h4> {{postTitle}} </h4>
+    <pre> {{posts[postTitle]}} </pre>
+    <button type="submit" name="edit" value="{{postTitle}}">Edit</button>
+    <button type="submit" name="delete" value="{{postTitle}}">Delete</button>
   </fieldset>
   <br>
   {% endfor %}
