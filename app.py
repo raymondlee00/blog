@@ -178,8 +178,7 @@ def editPost():
     data = runsqlcommand(command)
     for row in data:
         if oldTitle == row[1]:
-            row[1] = newTitle
-            row[2] = newContent
+            command = "UPDATE bloginfo SET title = '{}', content = '{}' WHERE title = '{}'".format(newTitle, newContent, oldTitle)
             blogName = row[3]
     return render_template(url_for("viewBlog", blogName = blogName))
 
