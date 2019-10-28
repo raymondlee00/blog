@@ -110,8 +110,8 @@ def delete():
     for row in data:
         if entrytodelete == row[1]:
             blowname = row[3]
-    return redirect("/viewBlog", blogName = blogname)
-    
+    return redirect(url_for("viewBlog", blogName = blogname))
+
 
 @app.route('/search')
 def search():
