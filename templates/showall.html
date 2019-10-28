@@ -11,7 +11,7 @@
   <form action = "/viewBlog">
     <br>
           {% for blogTitle in blogTitles%}
-          <input type="submit" name=selectedBlog value="{{blogTitle}}"{{blogTitle}}></input>
+          <input type="submit" name="blogName" value="{{blogTitle}}"{{blogTitle}}></input>
           <br><br>
           {% endfor %}
 
