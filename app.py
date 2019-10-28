@@ -156,14 +156,21 @@ def showall():
 
 @app.route('/viewBlog')
 def viewBlog():
-    blogName = request.args["blogName"]
+    blogname = request.args["blogName"]
+
     command = "SELECT * FROM bloginfo"
     data = runsqlcommand(command)
     dict = {}
     for row in data:
-        if row[0] == request.args["selecteduser"]:
-            dict.update( {row[1] : row[2]})
-    return render_template("viewBlog.html", posts = dict)
+        if row[1] = blogname:
+            dict.update({row[2] : row[3]})
+            user = row[0]
+
+    for row in data:
+        if row[0] == session["username"]:
+            return render_template("viewYourBlog.html", posts = dict, blogName = blogname, username = session["username"])
+    else:
+        return render_template("viewBlog.html", posts = dict, blogName = blogname, username = user)
 
 
 def runsqlcommand(command):
