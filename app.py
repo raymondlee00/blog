@@ -100,10 +100,11 @@ def postadd():
 
 @app.route("/delete")
 def delete():
-    entrytodelete = request.args["postTitle"]
+    entrytodelete = request.args["delete"]
     command = "DELETE FROM bloginfo WHERE title = '{}'".format(entrytodelete)
     runsqlcommand(command)
-    return redirect("/welcome")
+    print(temp)
+    return redirect("/viewBlog", blogName = temp[3])
 
 
 @app.route('/search')
@@ -149,10 +150,6 @@ def editPost():
     postTitle = request.args["edit"]
     return render_template("editPost.html")
 
-@app.route('/delete')
-def deletePost():
-    postTitle = request.args["delete"]
-    return render_template("deletePost.html")
 
 
 @app.route('/showall')
