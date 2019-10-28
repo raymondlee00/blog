@@ -77,13 +77,14 @@ def welcome():
     for row in data:
         if row[0] == session["username"] and not(row[3] in allBlogs):
             allBlogs.append(row[3])
-    return render_template("welcome.html", blogNames = allBlogs, username = session["username"])
+    return render_template("welcome.html", blogNames=allBlogs, username=session["username"])
 
 
 @app.route('/createPost')
 def createPost():
     blogName = request.args["blogName"]
-    return render_template("createPost.html", blogName = blogName)
+    return render_template("createPost.html", blogName=blogName)
+
 
 @app.route('/addpost')
 def postadd():
@@ -94,8 +95,7 @@ def postadd():
         session["username"], title, content, blogName)
     runsqlcommand(command)
     flash("added post alright")
-    return redirect(url_for("viewBlog", blogName = blogName))
-
+    return redirect(url_for("viewBlog", blogName=blogName))
 
 
 @app.route("/delete")
@@ -110,7 +110,7 @@ def delete():
     for row in data:
         if entrytodelete == row[1]:
             blowname = row[3]
-    return redirect(url_for("viewBlog", blogName = blogname))
+    return redirect(url_for("viewBlog", blogName=blogname))
 
 
 @app.route('/search')
@@ -134,7 +134,8 @@ def results():
     #     if (titlecomp.__contains__(searchInput)):
     #         results[title] = content
 
-    return render_template("results.html", results = allPosts)
+    return render_template("results.html", results=allPosts)
+
 
 @app.route('/addBlog')
 def addblog():
@@ -147,30 +148,31 @@ def addblog():
     runsqlcommand(command)
     return redirect("/welcome")
 
+
 @app.route('/createBlog')
 def createBlog():
     return render_template("createBlog.html")
+
 
 @app.route('/edit')
 def editPost():
     postTitle = request.args["edit"]
     command = "SELECT * FROM bloginfo"
     data = runsqlcommand(command)
-    post= []
+    post = []
     for row in data:
         if postTitle == row[1]:
             post.append(row[1])
             post.append(row[2])
             blogName = row[3]
-    return render_template("editPost.html", post = post, blogName = blogName)
+    return render_template("editPost.html", post=post, blogName=blogName)
 
-    @app.route('/editPost')
-    def editPost():
-        newTitle = request.args["postTitle"]
-        newContent = request.args["postContent"]
-        oldTitle = request.args["oldTitle"]
-        return render_template(url_for("viewBlog", blogName = blogName))
-
+@app.route('/editPost')
+def editPost():
+    newTitle = request.args["postTitle"]
+    newContent = request.args["postContent"]
+    oldTitle = request.args["oldTitle"]
+    return render_template(url_for("viewBlog", blogName=blogName))
 
 
 @app.route('/showall')
@@ -186,7 +188,7 @@ def showall():
 
 @app.route('/viewBlog')
 def viewBlog():
-    #if not(blogName in locals()):
+    # if not(blogName in locals()):
     blogName = request.args["blogName"]
 
     command = "SELECT * FROM bloginfo"
@@ -196,12 +198,12 @@ def viewBlog():
         if row[3] == blogName:
             user = row[0]
         if row[3] == blogName and not(row[1] == "" and row[2] == ""):
-            dict.update({row[1] : row[2]})
+            dict.update({row[1]: row[2]})
 
     if user == session["username"]:
-        return render_template("viewYourBlog.html", posts = dict, blogName = blogName, username = session["username"])
+        return render_template("viewYourBlog.html", posts=dict, blogName=blogName, username=session["username"])
     else:
-        return render_template("viewBlog.html", posts = dict, blogName = blogName, username = user)
+        return render_template("viewBlog.html", posts=dict, blogName=blogName, username=user)
 
 
 def runsqlcommand(command):
@@ -213,6 +215,7 @@ def runsqlcommand(command):
         return c.fetchall()
     db.commit()  # save changes
     db.close()  # close database
+
 
 if __name__ == '__main__':
     app.debug = True
