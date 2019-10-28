@@ -103,9 +103,15 @@ def delete():
     entrytodelete = request.args["delete"]
     command = "DELETE FROM bloginfo WHERE title = '{}'".format(entrytodelete)
     runsqlcommand(command)
-    print(temp)
-    return redirect("/viewBlog", blogName = temp[3])
 
+    command = "SELECT * FROM bloginfo"
+    data = runsqlcommand(command)
+    blogname = ""
+    for row in data:
+        if entrytodelete == row[1]:
+            blowname = row[3]
+    return redirect("/viewBlog", blogName = blogname)
+    
 
 @app.route('/search')
 def search():
