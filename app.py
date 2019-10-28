@@ -154,14 +154,15 @@ def createBlog():
 @app.route('/edit')
 def editPost():
     postTitle = request.args["edit"]
-
     command = "SELECT * FROM bloginfo"
     data = runsqlcommand(command)
-    dict= {}
+    post= []
     for row in data:
-        if postTitle = row[1]:
-            dict.update({row[1] : row[2]})
-    return render_template("editPost.html", dict = dict)
+        if postTitle == row[1]:
+            post.append(row[1])
+            post.append(row[2])
+            blogName = row[3]
+    return render_template("editPost.html", post = post, blogName = blogName)
 
 
 
@@ -185,13 +186,13 @@ def viewBlog():
     data = runsqlcommand(command)
     dict = {}
     for row in data:
+        if row[3] == blogName:
+            user = row[0]
         if row[3] == blogName and not(row[1] == "" and row[2] == ""):
             dict.update({row[1] : row[2]})
-            user = row[0]
-    print(dict)
-    for row in dict:
-        if row[0] == session["username"]:
-            return render_template("viewYourBlog.html", posts = dict, blogName = blogName, username = session["username"])
+
+    if user == session["username"]:
+        return render_template("viewYourBlog.html", posts = dict, blogName = blogName, username = session["username"])
     else:
         return render_template("viewBlog.html", posts = dict, blogName = blogName, username = user)
 
