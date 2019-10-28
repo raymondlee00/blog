@@ -182,7 +182,7 @@ def viewBlog():
             dict.update({row[1] : row[2]})
             user = row[0]
     print(dict)
-    for row in data:
+    for row in dict:
         if row[0] == session["username"]:
             return render_template("viewYourBlog.html", posts = dict, blogName = blogName, username = session["username"])
     else:
