@@ -164,6 +164,13 @@ def editPost():
             blogName = row[3]
     return render_template("editPost.html", post = post, blogName = blogName)
 
+    @app.route('/editPost')
+    def editPost():
+        newTitle = request.args["postTitle"]
+        newContent = request.args["postContent"]
+        oldTitle = request.args["oldTitle"]
+        return render_template(url_for("viewBlog", blogName = blogName))
+
 
 
 @app.route('/showall')
