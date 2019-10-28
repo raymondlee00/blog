@@ -10,8 +10,8 @@
 
   <form action = "/viewBlog">
     <br>
-          {% for user in usernames%}
-          <input type="submit" name=selecteduser value="{{user[0]}}"{{user[0]}}></input>
+          {% for blogTitle in blogTitles%}
+          <input type="submit" name=selectedBlog value="{{blogTitle}}"{{blogTitle}}></input>
           <br><br>
           {% endfor %}
 

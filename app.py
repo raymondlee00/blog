@@ -75,8 +75,8 @@ def welcome():
     data = runsqlcommand(command)
     allBlogs = []
     for row in data:
-        if row[0] == session["username"]:
-            allBlogs.append(row[1])
+        if row[0] == session["username"] and not(row[3] in allBlogs):
+            allBlogs.append(row[3])
     return render_template("welcome.html", blogNames = allBlogs, username = session["username"])
 
 
@@ -149,11 +149,13 @@ def createBlog():
 
 @app.route('/showall')
 def showall():
-    command = "SELECT username FROM userinfo"
-    allusers = runsqlcommand(command)
-    print(type(allusers[0]))
-    print(allusers)
-    return render_template("showall.html", usernames=allusers)
+    command = "SELECT * FROM bloginfo"
+    all = runsqlcommand(command)
+    blogTitles = []
+    for row in all:
+        if not(row[3] in blogTitles):
+            blogTitles.append(row[3])
+    return render_template("showall.html", blogTitles=blogTitles)
 
 
 @app.route('/viewBlog')
