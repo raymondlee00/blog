@@ -156,6 +156,7 @@ def showall():
 
 @app.route('/viewBlog')
 def viewBlog():
+    blogName = request.args["blogName"]
     command = "SELECT * FROM bloginfo"
     data = runsqlcommand(command)
     dict = {}
