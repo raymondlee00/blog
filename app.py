@@ -83,6 +83,9 @@ def welcome():
     # print(allpostsrev)
     return render_template("welcome.html", username=session["username"], posts=allposts)
 
+@app.route('/createPost')
+def createPost():
+    return render_template("createPost.html")
 
 @app.route('/addpost')
 def postadd():
@@ -93,6 +96,7 @@ def postadd():
     runsqlcommand(command)
     flash("added post alright")
     return redirect("/welcome")
+
 
 
 @app.route("/delete")
@@ -126,10 +130,19 @@ def results():
 
     return render_template("results.html", results = allPosts)
 
+@app.route('/addblog.html')
+def addblog:
+    #username = session["username"]
+    blogname = request.args["blogName"]
+    title = ""
+    content = ""
+    command = "INSERT INTO bloginfo VALUES('{}','{}', '{}','{}')".format(
+        session["username"], blogname, title, content)
+    runsqlcommand(command)
+    return redirect("/welcome")
 
-@app.route('/createPost')
-def createPost():
-    return render_template("createPost.html")
+@app.route('/createblog.html'):
+return render_template("createPost.html")
 
 
 @app.route('/showall')
