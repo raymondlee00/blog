@@ -17,7 +17,7 @@ c = db.cursor()               #facilitate db ops
 #row[1] = blogid
 #row[2] = blog title
 #row[3] = blog content
-#command = "CREATE TABLE bloginfo(username TEXT, title TEXT, content TEXT);"
+#command = "CREATE TABLE bloginfo(username TEXT, title TEXT, content TEXT, blogName TEXT);"
 #c.execute(command) # run SQL statement
 
 #------------------------------------------------------------------------------

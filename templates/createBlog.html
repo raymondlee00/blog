@@ -4,13 +4,14 @@
 {% endblock %}
 
 {% block content %}
-  <form action = "/results">
+  <form action = "/addBlog">
     <fieldset>
-        <legend> Search </legend>
+        <legend> Create Blog </legend>
         <br>
-        <label> Enter Keywords: </label>
-        <input type = "text" name = "searchInput" placeholder = "Keyword" />
-        <input type = "submit" id = "submit" value = "Search" />
+        <label> Blog Title: </label>
+        <input type="text" name="blogName" placeholder = "Blog Title" />
+        <input type="submit" id="submit" value="Create Blog"
+        <br>
       </fieldset>
     </form>
   {% endblock %}

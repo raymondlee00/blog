@@ -4,14 +4,14 @@
 {% endblock %}
 
 {% block content %}
-<a href="/welcome">Back to homepage</a>
+<a href="/welcome"><center>Back to homepage<center></a>
 <br>
 <a href="/search">Search Blogs</a>
 
   <form action = "/viewBlog">
     <br>
-          {% for user in usernames%}
-          <input type="submit" name=selecteduser value="{{user[0]}}"{{user[0]}}></input>
+          {% for blogTitle in blogTitles%}
+          <input type="submit" name="blogName" value="{{blogTitle}}"{{blogTitle}}></input>
           <br><br>
           {% endfor %}
 

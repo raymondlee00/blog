@@ -72,3 +72,10 @@ alexO -- 2019-10-27 6:34pm
 coded viewBlog under the viewBlog route in app.py
 website is essentially finished as this was the last segment of code needed to
 have been completed
+
+alexT -- 2019-10-28 3:12am
+implemented user ability to have multiple blogs and to edit blogs
+
+alexO -- 2019--10-28 3:12am
+implemented user ability to have multiple blogs and to edit blogs alongside alexT
+polished code
