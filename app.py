@@ -75,14 +75,10 @@ def welcome():
     data = runsqlcommand(command)
     allBlogs = []
     for row in data:
-        if row[0] == session["username"]
+        if row[0] == session["username"]:
             allBlogs.append(row[1])
-    return render_template("welcome.html", blogNames = allBlogs, username = session["username"]
+    return render_template("welcome.html", blogNames = allBlogs, username = session["username"])
 
-
-
-
-    return render_template("welcome.html", username=session["username"], posts=allposts)
 
 @app.route('/createPost')
 def createPost():
