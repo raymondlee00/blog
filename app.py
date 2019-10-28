@@ -155,7 +155,7 @@ def createBlog():
 
 
 @app.route('/edit')
-def editPost():
+def edit():
     postTitle = request.args["edit"]
     command = "SELECT * FROM bloginfo"
     data = runsqlcommand(command)
