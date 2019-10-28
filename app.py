@@ -136,7 +136,7 @@ def addblog():
     title = ""
     content = ""
     command = "INSERT INTO bloginfo VALUES('{}','{}', '{}','{}')".format(
-        session["username"], blogname, title, content)
+        session["username"], title, content, blogName)
     runsqlcommand(command)
     return redirect("/welcome")
 
@@ -165,10 +165,10 @@ def viewBlog():
     data = runsqlcommand(command)
     dict = {}
     for row in data:
-        if row[1] == blogName:
-            dict.update({row[2] : row[3]})
+        if row[3] == blogName:
+            dict.update({row[1] : row[2]})
             user = row[0]
-
+    print(dict)
     for row in data:
         if row[0] == session["username"]:
             return render_template("viewYourBlog.html", posts = dict, blogName = blogName, username = session["username"])
