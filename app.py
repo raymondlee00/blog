@@ -180,7 +180,7 @@ def editPost():
         if oldTitle == row[1]:
             command = "UPDATE bloginfo SET title = '{}', content = '{}' WHERE title = '{}'".format(newTitle, newContent, oldTitle)
             blogName = row[3]
-    return render_template(url_for("viewBlog", blogName = blogName))
+    return redirect(url_for("viewBlog", blogName = blogName))
 
 
 @app.route('/showall')
