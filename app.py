@@ -88,10 +88,15 @@ def welcome():
 def postadd():
     title = request.args["postTitle"]
     content = request.args["postContent"]
-    title = title.replace("'", "''")
-    content = content.replace("'", "''")
-    command = "INSERT INTO bloginfo VALUES('{}','{}', '{}')".format(
-        session["username"], title, content)
+    command = "SELECT * FROM bloginfo"
+    dict = runsqlcommand(command)
+    for row in dict:
+        if (row[1] == title):
+            flash("Title already exists. Change Title")
+            return redirect(url_for("createPost", blogName = blogName))
+
+    command = "INSERT INTO bloginfo VALUES('{}','{}', '{}', '{}')".format(
+        session["username"], title, content, blogName)
     runsqlcommand(command)
     flash("added post alright")
     return redirect("/welcome")
@@ -129,9 +134,58 @@ def results():
     return render_template("results.html", results=allPosts)
 
 
-@app.route('/createPost')
-def createPost():
-    return render_template("createPost.html")
+@app.route('/addBlog')
+def addblog():
+    #username = session["username"]
+    blogname = request.args["blogName"]
+    title = ""
+    content = ""
+    command = "SELECT * FROM bloginfo"
+    dict = runsqlcommand(command)
+    print(dict)
+    for row in dict:
+        if (row[3] == blogname):
+            flash("Blog name already exists. Change it to add it")
+            return redirect("/createBlog")
+    command = "INSERT INTO bloginfo VALUES('{}','{}', '{}','{}')".format(
+        session["username"], title, content, blogname)
+    runsqlcommand(command)
+    return redirect("/welcome")
+
+
+@app.route('/createBlog')
+def createBlog():
+    return render_template("createBlog.html")
+
+
+@app.route('/edit')
+def edit():
+    postTitle = request.args["edit"]
+    command = "SELECT * FROM bloginfo"
+    data = runsqlcommand(command)
+    post = []
+    for row in data:
+        if postTitle == row[1]:
+            post.append(row[1])
+            post.append(row[2])
+            blogName = row[3]
+    return render_template("editPost.html", post=post, blogName=blogName)
+
+@app.route('/editPost')
+def editPost():
+    newTitle = request.args["postTitle"]
+    newContent = request.args["postContent"]
+    oldTitle = request.args["oldTitle"]
+    blogName = ""
+
+    command = "SELECT * FROM bloginfo"
+    data = runsqlcommand(command)
+    for row in data:
+        if oldTitle == row[1]:
+            command = "UPDATE bloginfo SET title = '{}', content = '{}' WHERE title = '{}'".format(newTitle, newContent, oldTitle)
+            blogName = row[3]
+    runsqlcommand(command)
+    return redirect(url_for("viewBlog", blogName = blogName))
 
 
 @app.route('/showall')

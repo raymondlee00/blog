@@ -1,0 +1,26 @@
+{% block head %}
+  <title> Quackheads Blog </title>
+  <h1> Quackheads Blog </h1>
+{% endblock %}
+
+{% block content %}
+{{get_flashed_messages()[0]}}
+<br>
+  <form action = "/addBlog">
+    <fieldset>
+        <legend> Create Blog </legend>
+        <br>
+        <label> Blog Title: </label>
+        <input type="text" name="blogName" placeholder = "Blog Title" />
+        <input type="submit" id="submit" value="Create Blog"
+        <br>
+      </fieldset>
+    </form>
+  {% endblock %}
+
+  {% block footer %}
+      <a href="/welcome">Back to homepage</a>
+      <br>
+      <br>
+      <a href="/showall">Show All Blogs</a>
+  {% endblock %}
