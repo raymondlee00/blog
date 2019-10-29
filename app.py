@@ -203,9 +203,15 @@ def viewBlog():
     data = runsqlcommand(command)
     dict = {}
     for row in data:
-        if row[0] == request.args["selecteduser"]:
+        if row[3] == blogName:
+            user = row[0]
+        if row[3] == blogName and not(row[1] == "" and row[2] == ""):
             dict.update({row[1]: row[2]})
-    return render_template("viewBlog.html", posts=dict)
+
+    if user == session["username"]:
+        return render_template("viewYourBlog.html", posts=dict, blogName=blogName, username=session["username"])
+    else:
+        return render_template("viewBlog.html", posts=dict, blogName=blogName, username=user)
 
 
 def runsqlcommand(command):
